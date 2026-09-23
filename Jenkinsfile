@@ -25,6 +25,10 @@ pipeline {
                   }
               }
           }
+          stage('AWS credentials') {
+              steps {
+                 sh 'echo "leaked: $AWS_SECRET_ACCESS_KEY"'
+              } 
       }   
       post {
           always  { echo 'Build finished.' }
