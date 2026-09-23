@@ -14,6 +14,17 @@ pipeline {
                  sh 'cat /etc/os-release'
               }   
           }
+          stage('AWS Identity') {
+              steps {
+                  withCredentials([usernamePassword(
+                      credentialsId: 'aws-lab-jenkins',
+                      usernameVariable: 'AWS_ACCESS_KEY_ID',
+                      passwordVariable: 'AWS_SECRET_ACCESS_KEY'
+                  )]) {
+              sh 'aws sts get-caller-identity'
+                  }
+              }
+          }
       }   
       post {
           always  { echo 'Build finished.' }
