@@ -12,8 +12,6 @@ pipeline {
           stage('Inspect') {
               steps {
                  sh 'cat /etc/os-release'
-                 sh 'pwd'
-                 sh 'id'
               }   
           }
       }   
