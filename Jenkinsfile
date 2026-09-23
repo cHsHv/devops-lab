@@ -22,12 +22,8 @@ pipeline {
                       passwordVariable: 'AWS_SECRET_ACCESS_KEY'
                   )]) {
               sh 'aws sts get-caller-identity'
+              sh 'echo "leaked: $AWS_SECRET_ACCESS_KEY"'
                   }
-              }
-          }
-          stage('AWS credentials') {
-              steps {
-                 sh 'echo "leaked: $AWS_SECRET_ACCESS_KEY"'
               }
           }
       }   
