@@ -23,6 +23,13 @@ pipeline {
                       passwordVariable: 'AWS_SECRET_ACCESS_KEY'
                   )]) {
                   sh "aws s3 cp build_number.txt s3://na-pesho-kofata/build/${env.BUILD_NUMBER}/build_number.txt"
+                  sh '''
+                     if aws iam list-users 2>/dev/null; then
+                     echo "FAIL: iam:ListUsers succeeded — AdministratorAccess is still attached"
+                     exit 1
+                     fi
+                     echo "OK: iam:ListUsers denied as expected"
+                     '''
                   }
               }
           }
