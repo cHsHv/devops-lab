@@ -9,9 +9,10 @@ pipeline {
                   echo "Starting ${env.LAB_NAME}, build #${env.BUILD_NUMBER}"
               }
           }  
-          stage('Inspect') {
+          stage('write file') {
               steps {
-                 sh 'cat /etc/os-release'
+                 sh "echo ${env.BUILD_NUMBER} > build_number.txt"
+                 sh 'cat build_number.txt'
               }   
           }
           stage('AWS Identity') {
