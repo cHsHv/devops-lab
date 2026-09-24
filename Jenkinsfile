@@ -22,7 +22,7 @@ pipeline {
                       usernameVariable: 'AWS_ACCESS_KEY_ID',
                       passwordVariable: 'AWS_SECRET_ACCESS_KEY'
                   )]) {
-                  sh 'aws s3 cp build_number.txt s3://na-pesho-kofata/build/${env.BUILD_NUMBER}/build_number.txt'
+                  sh "aws s3 cp build_number.txt s3://na-pesho-kofata/build/${env.BUILD_NUMBER}/build_number.txt"
                   }
               }
           }
