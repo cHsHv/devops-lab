@@ -22,7 +22,7 @@ pipeline {
                       usernameVariable: 'AWS_ACCESS_KEY_ID',
                       passwordVariable: 'AWS_SECRET_ACCESS_KEY'
                   )]) {
-                  sh 'aws s3 cp build_number.txt S3://na-pesho-kofata/builds/'
+                  sh 'aws s3 cp build_number.txt S3://na-pesho-kofata/builds/build.txt'
                   sh 'aws iam list-users'
                   }
               }
