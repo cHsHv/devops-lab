@@ -24,7 +24,7 @@ pipeline {
                   )]) {
                   sh "aws s3 cp build_number.txt s3://na-pesho-kofata/build/${env.BUILD_NUMBER}/build_number.txt"
                   sh "aws s3 ls s3://na-pesho-kofata/build/${env.BUILD_NUMBER}/"
-                  sh "aws s3 cp s3://na-pesho-kofata/build/${env.BUILD_NUMBER}/build_number.txt .
+                  sh "aws s3 cp s3://na-pesho-kofata/build/${env.BUILD_NUMBER}/build_number.txt ."
                   sh 'cat build_number.txt'
                   sh "aws s3 rm s3://na-pesho-kofata/build/ --recursive"
                   sh '''
